@@ -15,8 +15,12 @@ def custom_len(input_list):
         8
 
     """
+    length = 0
 
-    return 0
+    for i in input_list:
+        length += 1
+
+    return length
 
 
 # For the next four exercises, you'll need to be clever and think about ways
@@ -42,9 +46,17 @@ def custom_append(input_list, value):
         >>> notes == ['Do', 'Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do', 'Re']
         True
 
-    """
+        Traceback (most recent call last):
+        File "/Users/samanthawette/src/list-slicing/further_study_tests.py", line 17, in test_custom_append
+        further_study.custom_append(notes, 'Re')
+        File "/Users/samanthawette/src/list-slicing/further_study.py", line 51, in custom_append
+        input_list[custom_len():custom_len()] = [value]
+TypeError: custom_len() missing 1 required positional argument: 'input_list'
 
-    pass
+
+    """
+    input_list[custom_len(input_list):] = [value]
+    
 
 
 def custom_extend(input_list, second_list):
@@ -62,8 +74,10 @@ def custom_extend(input_list, second_list):
         True
 
     """
+    #input_list[:] += second_list[:]
 
-    pass
+    input_list[custom_len(input_list):] = second_list
+
 
 
 def custom_insert(input_list, index, value):
@@ -81,7 +95,7 @@ def custom_insert(input_list, index, value):
 
     """
 
-    pass
+    input_list[index:index] = [value]
 
 
 def custom_remove(input_list, value):
@@ -93,7 +107,7 @@ def custom_remove(input_list, value):
 
     For example:
 
-        >>> notes = ['Do', 'Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do']
+        >>> notes = ['Do','Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do']
         >>> custom_remove(notes, 'Do')
         >>> notes == ['Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do']
         True
